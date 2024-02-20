@@ -71,7 +71,32 @@ public class Ex02 {
         }
     }
 
-    private static double parseSecondExpression(String expr) {
+    private static Double parseNumberOrVariable(Scanner sc, Map<String, Double> variables) {
+        if (sc.hasNextDouble()) {
+            return sc.nextDouble();
+        }
+        if (sc.hasNext("[a-zA-Z]*")) {
+            String var = sc.next();
+            if (variables.containsKey(var)) {
+                return variables.get(var);
+            }
+            System.err.println("Variable " + var + " doesn't exist.");
+            return Double.NaN;
+        }
+        System.err.println("Expression invalid.");
+        return Double.NaN;
+    }
+
+    private static double calculate(double num1, String token, double num2) {
+        return switch (token) {
+            case "-" -> num1 - num2;
+            case "*" -> num1 * num2;
+            case "/" -> num1 / num2;
+            default -> num1 + num2;
+        };
+    }
+
+    private static double parseSecondExpression(String expr, Map<String, Double> variables) {
         Scanner sc = new Scanner(expr);
 
         if (!sc.hasNextDouble()) {
