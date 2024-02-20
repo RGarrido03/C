@@ -8,18 +8,14 @@ public class Ex02 {
         Map<String, Double> variables = new HashMap<>();
 
         while (sInScanner.hasNextLine()) {
-            double exp1 = 0, exp2 = 0, result = 0;
-            String token = "", var = "", exp2Str = "";
-            boolean isExp1Var = false, isExp2Var = false;
+            String exp1, exp2, token;
+            double result;
 
             Scanner sc = new Scanner(sInScanner.nextLine());
 
             // Expression 1
-            if (sc.hasNextDouble()) {
-                exp1 = sc.nextDouble();
-            } else if (sc.hasNext("[A-Za-z]")) {
-                var = sc.next();
-                isExp1Var = true;
+            if (sc.hasNext("[A-Za-z0-9]")) {
+                exp1 = sc.next();
             } else {
                 System.err.println("Expression 1 is not valid!");
                 continue;
@@ -27,10 +23,10 @@ public class Ex02 {
 
             // Check if token exists
             if (!sc.hasNext()) {
-                if (variables.containsKey(var)) {
-                    System.out.println(variables.get(var));
+                if (variables.containsKey(exp1)) {
+                    System.out.println(variables.get(exp1));
                 } else {
-                    System.out.println("Warning: " + var + " doesn't exist.");
+                    System.out.println("Warning: " + exp1 + " doesn't exist.");
                 }
                 continue;
             }
@@ -43,23 +39,24 @@ public class Ex02 {
             token = sc.next();
 
             // Expression 2
-            if (sc.hasNextDouble()) {
-                exp2 = sc.nextDouble();
-            } else {
-                isExp2Var = true;
-                exp2Str = sc.nextLine();
+            if (!sc.hasNext()) {
+                System.err.println("Expression 2 is not valid!");
+                continue;
             }
+            exp2 = sc.next();
 
             // Calculation
             if (token.equals("=")) {
-                variables.put(var, exp2);
+                variables.put(exp1, Double.parseDouble(exp2));
                 System.out.println(exp2);
             } else {
+                double num1 = Double.parseDouble(exp1);
+                double num2 = Double.parseDouble(exp2);
                 result = switch (token) {
-                    case "-" -> isExp1Var ? variables.get(var) - exp2 : exp1 - exp2;
-                    case "*" -> isExp1Var ? variables.get(var) * exp2 : exp1 * exp2;
-                    case "/" -> isExp1Var ? variables.get(var) / exp2 : exp1 / exp2;
-                    default -> isExp1Var ? variables.get(var) + exp2 : exp1 + exp2;
+                    case "-" -> num1 - num2;
+                    case "*" -> num1 * num2;
+                    case "/" -> num1 / num2;
+                    default -> num1 + num2;
                 };
                 System.out.println(result);
             }
