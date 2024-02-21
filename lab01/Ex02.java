@@ -19,6 +19,7 @@ public class Ex02 {
                 exp1 = sc.next();
             } else {
                 System.err.println("Expression 1 is not valid!");
+                System.out.print(">>> ");
                 continue;
             }
 
@@ -29,12 +30,14 @@ public class Ex02 {
                 } else {
                     System.out.println("Warning: " + exp1 + " doesn't exist.");
                 }
+                System.out.print(">>> ");
                 continue;
             }
 
             // Token
             if (!sc.hasNext("[-+*/=]")) {
                 System.err.println("Token is not valid!");
+                System.out.print(">>> ");
                 continue;
             }
             token = sc.next();
@@ -42,13 +45,15 @@ public class Ex02 {
             // Expression 2
             if (!sc.hasNext()) {
                 System.err.println("Expression 2 doesn't exist!");
+                System.out.print(">>> ");
                 continue;
             }
             exp2 = sc.nextLine();
 
             // Evaluate expression 2
-            num2 = parseSecondExpression(exp2);
+            num2 = parseSecondExpression(exp2, variables);
             if (Double.isNaN(num2)) {
+                System.out.print(">>> ");
                 continue;
             }
 
@@ -58,12 +63,7 @@ public class Ex02 {
                 System.out.println(num2);
             } else {
                 double num1 = Double.parseDouble(exp1);
-                result = switch (token) {
-                    case "-" -> num1 - num2;
-                    case "*" -> num1 * num2;
-                    case "/" -> num1 / num2;
-                    default -> num1 + num2;
-                };
+                result = calculate(num1, token, num2);
                 System.out.println(result);
             }
 
@@ -99,13 +99,8 @@ public class Ex02 {
     private static double parseSecondExpression(String expr, Map<String, Double> variables) {
         Scanner sc = new Scanner(expr);
 
-        if (!sc.hasNextDouble()) {
-            System.err.println("Expression 2 is invalid!");
-            return Double.NaN;
-        }
-        double num1 = sc.nextDouble();
-
-        if (!sc.hasNext()) {
+        Double num1 = parseNumberOrVariable(sc, variables);
+        if (num1.isNaN() || !sc.hasNext()) {
             return num1;
         }
 
@@ -115,21 +110,15 @@ public class Ex02 {
         }
         String token = sc.next();
 
-        if (!sc.hasNextDouble()) {
-            System.err.println("Expression 3 is invalid!");
-            return Double.NaN;
+        Double num2 = parseNumberOrVariable(sc, variables);
+        if (num2.isNaN()) {
+            return num2;
         }
-        double num2 = sc.nextDouble();
 
         if (sc.hasNext()) {
             System.out.println("Warning: Expression has more elements than supposed! Truncating.");
         }
 
-        return switch (token) {
-            case "-" -> num1 - num2;
-            case "*" -> num1 * num2;
-            case "/" -> num1 / num2;
-            default -> num1 + num2;
-        };
+        return calculate(num1, token, num2);
     }
 }
