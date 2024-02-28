@@ -9,8 +9,17 @@ public class Ex07 {
         while (sc.hasNextLine()) {
             Scanner sc2 = new Scanner(sc.nextLine());
             Node root = createPrefix(sc2, null, null);
+
+            if (root == null) {
+                continue;
+            }
+
             printTree(root);
+
             printInfix(root);
+            System.out.println();
+
+            System.out.println(eval(root));
         }
     }
 
@@ -32,6 +41,10 @@ public class Ex07 {
             return n;
         }
 
+        if (!sc.hasNext("[-+*/]")) {
+            System.err.println(sc.next() + " is not a valid operation!");
+            return null;
+        }
         Operation op = new Operation(sc.next(), parent);
 
         if (parent != null) {
@@ -64,6 +77,24 @@ public class Ex07 {
         } else {
             Number num = (Number) root;
             System.out.print(num.getValue() + " ");
+        }
+    }
+
+    private static double eval(Node root) {
+        if (root.getClass() == Operation.class) {
+            Operation op = (Operation) root;
+            double left = eval(op.getLeft());
+            double right = eval(op.getRight());
+
+            return switch (op.getOperation()) {
+                case "-" -> left - right;
+                case "*" -> left * right;
+                case "/" -> left / right;
+                default -> left + right;
+            };
+        } else {
+            Number num = (Number) root;
+            return num.getValue();
         }
     }
 }
