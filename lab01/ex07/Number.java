@@ -1,18 +1,18 @@
 package ex07;
 
 public class Number extends Node {
-    private final int value;
+    private final double value;
 
-    public Number(int value, Node parent) {
+    public Number(double value, Node parent) {
         super(parent);
         this.value = value;
     }
 
-    public Number(int value) {
+    public Number(double value) {
         this(value, null);
     }
 
-    public int getValue() {
+    public double getValue() {
         return this.value;
     }
 
