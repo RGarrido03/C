@@ -14,8 +14,6 @@ public class Ex07 {
                 continue;
             }
 
-            printTree(root);
-
             printInfix(root);
             System.out.print(" = ");
 
@@ -52,20 +50,6 @@ public class Ex07 {
         }
         createPrefix(sc, op, Direction.LEFT);
         return op;
-    }
-
-    private static void printTree(Node root) {
-        if (root == null) {
-            System.err.println("Root is null");
-            return;
-        }
-
-        System.out.println(root);
-
-        if (root.getClass() == Operation.class) {
-            printTree(((Operation) root).getLeft());
-            printTree(((Operation) root).getRight());
-        }
     }
 
     private static void printInfix(Node root) {
