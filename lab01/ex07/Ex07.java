@@ -17,7 +17,7 @@ public class Ex07 {
             printTree(root);
 
             printInfix(root);
-            System.out.println();
+            System.out.print(" = ");
 
             System.out.println(eval(root));
         }
@@ -71,12 +71,15 @@ public class Ex07 {
     private static void printInfix(Node root) {
         if (root.getClass() == Operation.class) {
             Operation op = (Operation) root;
+
+            System.out.print("(");
             printInfix(op.getLeft());
-            System.out.print(op.getOperation() + " ");
+            System.out.print(op.getOperation());
             printInfix(op.getRight());
+            System.out.print(")");
         } else {
             Number num = (Number) root;
-            System.out.print(num.getValue() + " ");
+            System.out.print(num.getValue());
         }
     }
 
