@@ -66,6 +66,20 @@ public class GeometryBaseVisitor<T> extends AbstractParseTreeVisitor<T> implemen
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitExpressionIdentifier(GeometryParser.ExpressionIdentifierContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitExpressionMultDiv(GeometryParser.ExpressionMultDivContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitExpressionNumber(GeometryParser.ExpressionNumberContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -73,5 +87,12 @@ public class GeometryBaseVisitor<T> extends AbstractParseTreeVisitor<T> implemen
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExpressionIdentifier(GeometryParser.ExpressionIdentifierContext ctx) { return visitChildren(ctx); }
+	@Override public T visitExpressionPriority(GeometryParser.ExpressionPriorityContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitExpressionSumSub(GeometryParser.ExpressionSumSubContext ctx) { return visitChildren(ctx); }
 }

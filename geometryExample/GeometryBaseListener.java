@@ -100,6 +100,30 @@ public class GeometryBaseListener implements GeometryListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterExpressionIdentifier(GeometryParser.ExpressionIdentifierContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpressionIdentifier(GeometryParser.ExpressionIdentifierContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExpressionMultDiv(GeometryParser.ExpressionMultDivContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpressionMultDiv(GeometryParser.ExpressionMultDivContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterExpressionNumber(GeometryParser.ExpressionNumberContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -112,13 +136,25 @@ public class GeometryBaseListener implements GeometryListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpressionIdentifier(GeometryParser.ExpressionIdentifierContext ctx) { }
+	@Override public void enterExpressionPriority(GeometryParser.ExpressionPriorityContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpressionIdentifier(GeometryParser.ExpressionIdentifierContext ctx) { }
+	@Override public void exitExpressionPriority(GeometryParser.ExpressionPriorityContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExpressionSumSub(GeometryParser.ExpressionSumSubContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpressionSumSub(GeometryParser.ExpressionSumSubContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

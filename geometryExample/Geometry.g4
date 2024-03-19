@@ -9,14 +9,17 @@ instruction:
 
 assignment: expression '->' Identifier;
 
-distance: 'distance' point point;
+distance returns [Double res]: 'distance' point point;
 
-point: '(' expression ',' expression ')';
+point returns [Double x, Double y]: '(' expression ',' expression ')';
 
-expression:
-    distance    #ExpressionDistance
-  | Number      #ExpressionNumber
-  | Identifier  #ExpressionIdentifier
+expression returns [Double res]:
+    expression op=('*' | '/') expression    #ExpressionMultDiv
+  | expression op=('+' | '-') expression    #ExpressionSumSub
+  | '(' expression ')'                      #ExpressionPriority
+  | distance                                #ExpressionDistance
+  | Number                                  #ExpressionNumber
+  | Identifier                              #ExpressionIdentifier
   ;
 
 Number: [0-9]+;

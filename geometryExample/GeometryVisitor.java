@@ -55,6 +55,20 @@ public interface GeometryVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpressionDistance(GeometryParser.ExpressionDistanceContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code ExpressionIdentifier}
+	 * labeled alternative in {@link GeometryParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpressionIdentifier(GeometryParser.ExpressionIdentifierContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ExpressionMultDiv}
+	 * labeled alternative in {@link GeometryParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpressionMultDiv(GeometryParser.ExpressionMultDivContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code ExpressionNumber}
 	 * labeled alternative in {@link GeometryParser#expression}.
 	 * @param ctx the parse tree
@@ -62,10 +76,17 @@ public interface GeometryVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpressionNumber(GeometryParser.ExpressionNumberContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code ExpressionIdentifier}
+	 * Visit a parse tree produced by the {@code ExpressionPriority}
 	 * labeled alternative in {@link GeometryParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpressionIdentifier(GeometryParser.ExpressionIdentifierContext ctx);
+	T visitExpressionPriority(GeometryParser.ExpressionPriorityContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ExpressionSumSub}
+	 * labeled alternative in {@link GeometryParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpressionSumSub(GeometryParser.ExpressionSumSubContext ctx);
 }

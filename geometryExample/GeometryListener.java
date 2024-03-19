@@ -83,6 +83,30 @@ public interface GeometryListener extends ParseTreeListener {
 	 */
 	void exitExpressionDistance(GeometryParser.ExpressionDistanceContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code ExpressionIdentifier}
+	 * labeled alternative in {@link GeometryParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressionIdentifier(GeometryParser.ExpressionIdentifierContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ExpressionIdentifier}
+	 * labeled alternative in {@link GeometryParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressionIdentifier(GeometryParser.ExpressionIdentifierContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ExpressionMultDiv}
+	 * labeled alternative in {@link GeometryParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressionMultDiv(GeometryParser.ExpressionMultDivContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ExpressionMultDiv}
+	 * labeled alternative in {@link GeometryParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressionMultDiv(GeometryParser.ExpressionMultDivContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code ExpressionNumber}
 	 * labeled alternative in {@link GeometryParser#expression}.
 	 * @param ctx the parse tree
@@ -95,15 +119,27 @@ public interface GeometryListener extends ParseTreeListener {
 	 */
 	void exitExpressionNumber(GeometryParser.ExpressionNumberContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code ExpressionIdentifier}
+	 * Enter a parse tree produced by the {@code ExpressionPriority}
 	 * labeled alternative in {@link GeometryParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpressionIdentifier(GeometryParser.ExpressionIdentifierContext ctx);
+	void enterExpressionPriority(GeometryParser.ExpressionPriorityContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code ExpressionIdentifier}
+	 * Exit a parse tree produced by the {@code ExpressionPriority}
 	 * labeled alternative in {@link GeometryParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpressionIdentifier(GeometryParser.ExpressionIdentifierContext ctx);
+	void exitExpressionPriority(GeometryParser.ExpressionPriorityContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ExpressionSumSub}
+	 * labeled alternative in {@link GeometryParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressionSumSub(GeometryParser.ExpressionSumSubContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ExpressionSumSub}
+	 * labeled alternative in {@link GeometryParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressionSumSub(GeometryParser.ExpressionSumSubContext ctx);
 }
