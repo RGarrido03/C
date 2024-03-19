@@ -10,7 +10,7 @@ expr:
 	| Integer							# ExprInteger
 	| '(' expr ')'						# ExprParent;
 
-Integer: [0-9]+;
+Integer: [-+]?[0-9]+;
 NEWLINE: '\r'? '\n';
 WS: [ \t]+ -> skip;
 COMMENT: '#' .*? '\n' -> skip;
