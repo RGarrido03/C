@@ -1,0 +1,23 @@
+table(title,header,row)::=<<
+\<html\>
+   \<head\>
+      \<title\><title>\</title\>
+   \</head\>
+   \<body\>
+      \<table\>
+         <if(header)><header;separator="\n"><endif>
+         <if(row)><row;separator="\n"><endif>
+      \</table\>
+   \</body\>
+\</html\>
+>>
+
+rows(cols) ::= <<
+   \<tr>
+      <cols;separator="\n">
+   \</tr\>
+>>
+
+cols(info) ::= <<
+   \<td\><info>\</td\>
+>>
